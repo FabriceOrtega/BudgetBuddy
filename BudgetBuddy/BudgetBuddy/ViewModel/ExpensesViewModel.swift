@@ -251,33 +251,33 @@ class ExpensesViewModel: ObservableObject {
     private func createCategoryObjects() {
         
         // Create the category objects
-        let houseObject = Category(categoryName: "House", categoryColor: .yellow, categoryExpense: houseExpenses, expenseArray: houseExpensesArray, categoryRatio: houseRatio, categoryImageName: "🏠")
+        let houseObject = Category(categoryName: "House", categoryColor: Color("houseColor"), categoryExpense: houseExpenses, expenseArray: houseExpensesArray, categoryRatio: houseRatio, categoryImageName: "🏠")
         
-        let subscriptionsObject = Category(categoryName: "Subscriptions", categoryColor: .red, categoryExpense: subscriptionsExpenses, expenseArray: subscriptionsExpensesArray, categoryRatio: subscriptionsRatio, categoryImageName: "🎥")
+        let subscriptionsObject = Category(categoryName: "Subscriptions", categoryColor: Color("subscriptionsColor"), categoryExpense: subscriptionsExpenses, expenseArray: subscriptionsExpensesArray, categoryRatio: subscriptionsRatio, categoryImageName: "🎥")
         
         let carObject = Category(categoryName: "Car", categoryColor: Color("carColor"), categoryExpense: carExpenses, expenseArray: carExpensesArray, categoryRatio: carRatio, categoryImageName: "🚙")
         
-        let travelObject = Category(categoryName: "Travel", categoryColor: .black, categoryExpense: travelExpenses, expenseArray: travelExpensesArray, categoryRatio: travelRatio, categoryImageName: "✈️")
+        let travelObject = Category(categoryName: "Travel", categoryColor: Color("travelColor"), categoryExpense: travelExpenses, expenseArray: travelExpensesArray, categoryRatio: travelRatio, categoryImageName: "✈️")
         
-        let powerObject = Category(categoryName: "Power(Electricity,water...)", categoryColor: .green, categoryExpense: powerExpenses, expenseArray: powerExpensesArray, categoryRatio: powerRatio, categoryImageName: "🔌")
+        let powerObject = Category(categoryName: "Power(Electricity,water...)", categoryColor: Color("powerColor"), categoryExpense: powerExpenses, expenseArray: powerExpensesArray, categoryRatio: powerRatio, categoryImageName: "🔌")
         
-        let phoneObject = Category(categoryName: "Phone/Internet", categoryColor: .gray, categoryExpense: phoneExpenses, expenseArray: phoneExpensesArray, categoryRatio: phoneRatio, categoryImageName: "📱")
+        let phoneObject = Category(categoryName: "Phone/Internet", categoryColor: Color("phoneColor"), categoryExpense: phoneExpenses, expenseArray: phoneExpensesArray, categoryRatio: phoneRatio, categoryImageName: "📱")
         
-        let foodObject = Category(categoryName: "Food", categoryColor: .blue, categoryExpense: foodExpenses, expenseArray: foodExpensesArray, categoryRatio: foodRatio, categoryImageName: "🍔")
+        let foodObject = Category(categoryName: "Food", categoryColor: Color("foodColor"), categoryExpense: foodExpenses, expenseArray: foodExpensesArray, categoryRatio: foodRatio, categoryImageName: "🍔")
         
-        let otherGroceriesObject = Category(categoryName: "Other groceries", categoryColor: .pink, categoryExpense: otherGroceriresExpenses, expenseArray: otherGroceriresExpensesArray, categoryRatio: otherGroceriresRatio, categoryImageName: "🧽")
+        let otherGroceriesObject = Category(categoryName: "Other groceries", categoryColor: Color("otherGroceriesColor"), categoryExpense: otherGroceriresExpenses, expenseArray: otherGroceriresExpensesArray, categoryRatio: otherGroceriresRatio, categoryImageName: "🧽")
         
-        let shoppingObject = Category(categoryName: "Shopping", categoryColor: .purple, categoryExpense: shoppingExpenses, expenseArray: shoppingExpensesArray, categoryRatio: shoppingRatio, categoryImageName: "👜")
+        let shoppingObject = Category(categoryName: "Shopping", categoryColor: Color("shoppingColor"), categoryExpense: shoppingExpenses, expenseArray: shoppingExpensesArray, categoryRatio: shoppingRatio, categoryImageName: "👜")
         
-        let taxesObject = Category(categoryName: "Taxes", categoryColor: .yellow, categoryExpense: taxesExpenses, expenseArray: taxesExpensesArray, categoryRatio: taxesRatio, categoryImageName: "📨")
+        let taxesObject = Category(categoryName: "Taxes", categoryColor: Color("taxesColor"), categoryExpense: taxesExpenses, expenseArray: taxesExpensesArray, categoryRatio: taxesRatio, categoryImageName: "📨")
         
-        let activitiesObject = Category(categoryName: "Activities", categoryColor: .orange, categoryExpense: activitiesExpenses, expenseArray: activitiesExpensesArray, categoryRatio: activitiesRatio, categoryImageName: "🎳")
+        let activitiesObject = Category(categoryName: "Activities", categoryColor: Color("activitiesColor"), categoryExpense: activitiesExpenses, expenseArray: activitiesExpensesArray, categoryRatio: activitiesRatio, categoryImageName: "🎳")
         
-        let healthObject = Category(categoryName: "Health", categoryColor: .red, categoryExpense: heathExpenses, expenseArray: heathExpensesArray, categoryRatio: heathRatio, categoryImageName: "🩺")
+        let healthObject = Category(categoryName: "Health", categoryColor: Color("healthColor"), categoryExpense: heathExpenses, expenseArray: heathExpensesArray, categoryRatio: heathRatio, categoryImageName: "🩺")
         
-        let petsObject = Category(categoryName: "Pets", categoryColor: .purple, categoryExpense: petsExpenses, expenseArray: petsExpensesArray, categoryRatio: petsRatio, categoryImageName: "🐶")
+        let petsObject = Category(categoryName: "Pets", categoryColor: Color("petsColor"), categoryExpense: petsExpenses, expenseArray: petsExpensesArray, categoryRatio: petsRatio, categoryImageName: "🐶")
         
-        let othersObject = Category(categoryName: "Others", categoryColor: .gray, categoryExpense: otherExpenses, expenseArray: otherExpensesArray, categoryRatio: otherRatio, categoryImageName: "❔")
+        let othersObject = Category(categoryName: "Others", categoryColor: Color("otherColor"), categoryExpense: otherExpenses, expenseArray: otherExpensesArray, categoryRatio: otherRatio, categoryImageName: "❔")
         
         
         // Clear the category array
