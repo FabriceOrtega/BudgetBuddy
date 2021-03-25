@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C2D9824260C98F500BF9607 /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2D9823260C98F500BF9607 /* CoreDataStorage.swift */; };
+		1C2D9829260C9A1400BF9607 /* ExpensesCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1C2D9827260C9A1400BF9607 /* ExpensesCoreData.xcdatamodeld */; };
 		1C3FBD70260625C400E09FEC /* BudgetBuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3FBD6F260625C400E09FEC /* BudgetBuddyApp.swift */; };
 		1C3FBD72260625C400E09FEC /* BudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3FBD71260625C400E09FEC /* BudgetView.swift */; };
 		1C3FBD74260625C700E09FEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C3FBD73260625C700E09FEC /* Assets.xcassets */; };
@@ -26,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C2D9823260C98F500BF9607 /* CoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorage.swift; sourceTree = "<group>"; };
+		1C2D9828260C9A1400BF9607 /* ExpensesDat.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ExpensesDat.xcdatamodel; sourceTree = "<group>"; };
 		1C3FBD6C260625C400E09FEC /* BudgetBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BudgetBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C3FBD6F260625C400E09FEC /* BudgetBuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetBuddyApp.swift; sourceTree = "<group>"; };
 		1C3FBD71260625C400E09FEC /* BudgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetView.swift; sourceTree = "<group>"; };
@@ -57,6 +61,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C2D9822260C98D800BF9607 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				1C2D9823260C98F500BF9607 /* CoreDataStorage.swift */,
+				1C2D9827260C9A1400BF9607 /* ExpensesCoreData.xcdatamodeld */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
 		1C3FBD63260625C400E09FEC = {
 			isa = PBXGroup;
 			children = (
@@ -76,6 +89,7 @@
 		1C3FBD6E260625C400E09FEC /* BudgetBuddy */ = {
 			isa = PBXGroup;
 			children = (
+				1C2D9822260C98D800BF9607 /* Storage */,
 				1C613A59260A304C00A4810A /* Extensions */,
 				1C3FBD82260625F600E09FEC /* View */,
 				1C3FBD81260625E800E09FEC /* ViewModel */,
@@ -214,9 +228,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C2D9824260C98F500BF9607 /* CoreDataStorage.swift in Sources */,
 				1CE2B1D02608B03F007A92B4 /* TotalExpenseView.swift in Sources */,
 				1C53BE7F2606280200FE4A59 /* Expenses.swift in Sources */,
 				1C613A57260A304400A4810A /* extension Binding.swift in Sources */,
+				1C2D9829260C9A1400BF9607 /* ExpensesCoreData.xcdatamodeld in Sources */,
 				1CFB352F260A7FE70032B232 /* DetailView.swift in Sources */,
 				1C6CC22A2607DB7700778D81 /* ExpenseBarView.swift in Sources */,
 				1C53BE7B2606275400FE4A59 /* Expense.swift in Sources */,
@@ -416,6 +432,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1C2D9827260C9A1400BF9607 /* ExpensesCoreData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1C2D9828260C9A1400BF9607 /* ExpensesDat.xcdatamodel */,
+			);
+			currentVersion = 1C2D9828260C9A1400BF9607 /* ExpensesDat.xcdatamodel */;
+			path = ExpensesCoreData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1C3FBD64260625C400E09FEC /* Project object */;
 }

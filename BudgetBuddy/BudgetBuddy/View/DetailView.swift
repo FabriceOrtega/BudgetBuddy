@@ -17,10 +17,19 @@ struct DetailView: View {
     // Return to budget view
     @Binding var detailViewIsShown: Bool
     
+    // View mode (month or day)
+    @Binding var viewMode: String
+    
     // Date formatter
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateStyle = .full
+        return formatter
+    }
+    
+    var monthFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMM yyyy"
         return formatter
     }
     
@@ -30,7 +39,13 @@ struct DetailView: View {
             
             VStack{
                 HStack{
-                    Text(totalArray[0].date, formatter: dateFormatter).bold()
+                    
+                    if viewMode == "day" {
+                        Text(totalArray[0].date, formatter: dateFormatter).bold()
+                    } else if viewMode == "month" {
+                        Text(totalArray[0].date, formatter: monthFormatter).bold()
+                    }
+                    
                     Spacer()
                 }.font(.title2)
                 
@@ -54,9 +69,14 @@ struct DetailView: View {
                         Image(systemName: "trash")
                             .onTapGesture {
                             // Remove from array
-                            if let index = expensesViewModel.expenses.expenses.firstIndex(where: {expense.title == $0.title && expense.amount == $0.amount && expense.date == $0.date}) {
+                            if let index = expensesViewModel.expenses.expenses.firstIndex(where: {expense.id == $0.id}) {
+                                // Remove from CoreData
+                                expensesViewModel.storage.removeExpense(expense: expensesViewModel.expenses.expenses[index])
+                                
+                                // Remove from array
                                 expensesViewModel.expenses.expenses.remove(at: index)
                             }
+                                
                             
                             // Return to the budget view
                             detailViewIsShown.toggle()
@@ -81,6 +101,6 @@ struct DetailView: View {
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView(totalArray: .constant([]), detailViewIsShown: .constant(true))
+        DetailView(totalArray: .constant([]), detailViewIsShown: .constant(true), viewMode: .constant("day"))
     }
 }

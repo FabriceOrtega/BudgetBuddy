@@ -11,6 +11,14 @@ struct DateView: View {
     // Chosen date
     @Binding var chosenDate: Date
     
+    // Currency
+    @Binding var currency: String
+    let currencies = ["$", "€", "£", "¥"]
+    
+    // Day/Month view
+    @Binding var viewMode: String
+    let viewModes = ["day", "month"]
+    
     // Bool to show the date picker
     @State var isChosingDate = false
     
@@ -21,33 +29,86 @@ struct DateView: View {
         return formatter
     }
     
+    var monthFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMM yyyy"
+        return formatter
+    }
+    
     
     var body: some View {
         if !isChosingDate{
-            HStack{
-                Text(chosenDate, formatter: dateFormatter)
-                    .font(.title2)
-                    .bold()
-                Image(systemName: "arrowtriangle.down.fill").font(.caption)
-                Spacer()
+            VStack{
                 
-            }.padding()
-            .onTapGesture {
-                withAnimation {
-                    isChosingDate.toggle()
+                
+                HStack{
+                    // Day/Month view picker
+                    Picker("View mode : \(viewMode)", selection: $viewMode) {
+                        ForEach(viewModes, id: \.self) {
+                            Text($0)
+                        }
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
+                    .frame(width: 150)
+                    
+                    
+                    Spacer()
+                    
+                    // Currency picker
+                    Picker("Currency : \(currency)", selection: $currency) {
+                        ForEach(currencies, id: \.self) {
+                            Text($0)
+                        }
+                    }
+                    .pickerStyle(MenuPickerStyle())
+                }.padding(.horizontal)
+                
+                HStack{
+                    if viewMode == "day" {
+                        Text(chosenDate, formatter: dateFormatter).bold()
+                    } else if viewMode == "month" {
+                        Text(chosenDate, formatter: monthFormatter).bold()
+                    }
+                    
+                    Image(systemName: "arrowtriangle.down.fill").font(.caption)
+                    Spacer()
+                    
+                }.padding()
+                .font(.title2)
+                .onTapGesture {
+                    withAnimation {
+                        isChosingDate.toggle()
+                    }
                 }
-                
             }
+            
+            
         }
         
         if isChosingDate{
             VStack{
-                DatePicker.init(selection: $chosenDate, displayedComponents: .date, label: {
-                    EmptyView()
-                })
-                .labelsHidden()
-                .datePickerStyle(GraphicalDatePickerStyle())
-                .padding()
+                
+                if viewMode == "day" {
+                    DatePicker.init(selection: $chosenDate, displayedComponents: .date, label: {
+                        EmptyView()
+                    })
+                    .labelsHidden()
+                    .datePickerStyle(GraphicalDatePickerStyle())
+                    .padding()
+                    
+                } else if viewMode == "month" {
+                    DatePicker.init(selection: $chosenDate, displayedComponents: .date, label: {
+                        EmptyView()
+                    })
+                    .labelsHidden()
+                    .datePickerStyle(WheelDatePickerStyle())
+                    .padding()
+                    
+                }
+                
+                
+                
+                
                 
                 //Button to validate
                 Button(action: {
@@ -55,7 +116,11 @@ struct DateView: View {
                         isChosingDate.toggle()
                     }
                 }, label: {
-                    Text("Hide")
+                    HStack{
+                        Text("Hide")
+                        Image(systemName: "arrowtriangle.up.fill").font(.caption)
+                    }
+                    
                 })
             }
         }
@@ -66,7 +131,7 @@ struct DateView: View {
 
 struct DateView_Previews: PreviewProvider {
     static var previews: some View {
-        DateView(chosenDate: .constant(Date()))
+        DateView(chosenDate: .constant(Date()), currency: .constant("€"), viewMode: .constant("day"))
     }
 }
 

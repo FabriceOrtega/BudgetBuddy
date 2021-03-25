@@ -17,6 +17,12 @@ struct BudgetView: View {
     // Navigation to the detail view
     @State var detailViewIsShown = false
     
+    // Currency
+    @AppStorage("currency") var currency = "€"
+    
+    // View mode
+    @State var viewMode = "day"
+    
     init() {
         self.expensesViewModel = ExpensesViewModel()
     }
@@ -25,9 +31,9 @@ struct BudgetView: View {
         
         VStack{
             
-            DateView(chosenDate: $expensesViewModel.chosenDate.onChange(dateChanged))
+            DateView(chosenDate: $expensesViewModel.chosenDate.onChange(dateChanged), currency: $currency, viewMode: $viewMode.onChange(changeViewMode))
             
-            TotalExpenseView(amountTotal: $expensesViewModel.totalFileteredExpense, detailViewIsShown: $detailViewIsShown.onChange(changeExpense), totalArray: $expensesViewModel.filteredExpenses)
+            TotalExpenseView(amountTotal: $expensesViewModel.totalFileteredExpense, detailViewIsShown: $detailViewIsShown.onChange(changeExpense), totalArray: $expensesViewModel.filteredExpenses, currency: $currency, viewMode: $viewMode)
             
             ZStack{
                 
@@ -41,9 +47,13 @@ struct BudgetView: View {
                                          color: $expensesViewModel.categoryArray[$0].categoryColor,
                                          categoryName: $expensesViewModel.categoryArray[$0].categoryName,
                                          amountCategory: $expensesViewModel.categoryArray[$0].categoryExpense,
-                                         categoryImageName: $expensesViewModel.categoryArray[$0].categoryImageName)
+                                         categoryImageName: $expensesViewModel.categoryArray[$0].categoryImageName,
+                                         currency: $currency)
                         }
                     }
+                    
+                    // Clear rectangle to allow scrolling above the "add button"
+                    Rectangle().frame(height: 60).foregroundColor(.clear)
                     
                 }
                 
@@ -52,11 +62,11 @@ struct BudgetView: View {
                     Spacer()
                     
                     HStack{
-                        Button(action: {
-                            expensesViewModel.filterExpenses()
-                        }, label: {
-                            Image(systemName: "arrow.clockwise.circle.fill").font(.largeTitle)
-                        })
+//                        Button(action: {
+//                            expensesViewModel.filterExpenses()
+//                        }, label: {
+//                            Image(systemName: "arrow.clockwise.circle.fill").font(.largeTitle)
+//                        })
                         
                         Spacer()
                         
@@ -95,13 +105,25 @@ struct BudgetView: View {
             expensesViewModel.filterExpenses()
         }
     }
+    
+    // Method to refresh the view mode
+    func changeViewMode(to value: String){
+        if viewMode == "day" {
+            expensesViewModel.displayMode = .day
+        } else if viewMode == "month" {
+            expensesViewModel.displayMode = .month
+        }
+        
+        // Filter again after a small time
+        Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false) { (_) in
+            expensesViewModel.filterExpenses()
+        }
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         BudgetView()
             
-        
-        
     }
 }

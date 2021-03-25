@@ -13,6 +13,9 @@ class ExpensesViewModel: ObservableObject {
     // Reference to the Expenses class
     @Published var expenses = Expenses.shared
     
+    // Refernec to the CoreData class
+    @Published var storage = CoreDataStorage.shared
+    
     //Display mode (can be day, month or year)
     @Published var displayMode: DisplayMode = DisplayMode.day
     
@@ -25,22 +28,66 @@ class ExpensesViewModel: ObservableObject {
     @Published var categoryArray: [Category] = []
     
     // Total expenses per category
-    var foodExpenses = 0.0
-    var foodExpensesArray: [Expense] = []
-    var foodRatio: Float = 1.0
+    var houseExpenses = 0.0
+    var houseExpensesArray: [Expense] = []
+    var houseRatio: Float = 1.0
     
-    var clotheExpenses = 0.0
-    var clotheExpensesArray: [Expense] = []
-    var clotheRatio: Float = 1.0
+    var subscriptionsExpenses = 0.0
+    var subscriptionsExpensesArray: [Expense] = []
+    var subscriptionsRatio: Float = 1.0
     
     var carExpenses = 0.0
     var carExpensesArray: [Expense] = []
     var carRatio: Float = 1.0
     
+    var travelExpenses = 0.0
+    var travelExpensesArray: [Expense] = []
+    var travelRatio: Float = 1.0
     
+    var powerExpenses = 0.0
+    var powerExpensesArray: [Expense] = []
+    var powerRatio: Float = 1.0
+    
+    var phoneExpenses = 0.0
+    var phoneExpensesArray: [Expense] = []
+    var phoneRatio: Float = 1.0
+    
+    var foodExpenses = 0.0
+    var foodExpensesArray: [Expense] = []
+    var foodRatio: Float = 1.0
+    
+    var otherGroceriresExpenses = 0.0
+    var otherGroceriresExpensesArray: [Expense] = []
+    var otherGroceriresRatio: Float = 1.0
+    
+    var shoppingExpenses = 0.0
+    var shoppingExpensesArray: [Expense] = []
+    var shoppingRatio: Float = 1.0
+    
+    var taxesExpenses = 0.0
+    var taxesExpensesArray: [Expense] = []
+    var taxesRatio: Float = 1.0
+    
+    var activitiesExpenses = 0.0
+    var activitiesExpensesArray: [Expense] = []
+    var activitiesRatio: Float = 1.0
+    
+    var heathExpenses = 0.0
+    var heathExpensesArray: [Expense] = []
+    var heathRatio: Float = 1.0
+    
+    var petsExpenses = 0.0
+    var petsExpensesArray: [Expense] = []
+    var petsRatio: Float = 1.0
+    
+    var otherExpenses = 0.0
+    var otherExpensesArray: [Expense] = []
+    var otherRatio: Float = 1.0
+    
+
     // Maximum amount category
     var maxAmount: Double {
-        max(clotheExpenses, foodExpenses, carExpenses)
+        max(houseExpenses, subscriptionsExpenses, carExpenses,travelExpenses, powerExpenses, phoneExpenses, foodExpenses, otherGroceriresExpenses, shoppingExpenses, taxesExpenses, activitiesExpenses, heathExpenses, petsExpenses, otherExpenses)
     }
     
     // Date formatter
@@ -57,7 +104,7 @@ class ExpensesViewModel: ObservableObject {
     
     // Enum for display mode
     enum DisplayMode{
-        case day, month, year
+        case day, month
     }
     
     // Categoray structure to be able to deal and sort objects
@@ -69,8 +116,6 @@ class ExpensesViewModel: ObservableObject {
         var categoryRatio : Float
         var categoryImageName: String
     }
-    
-
     
     // Methpd to filter accoring the parameters
     func filterExpenses() {
@@ -85,12 +130,25 @@ class ExpensesViewModel: ObservableObject {
             filteredExpenses = expenses.expenses.filter { $0.date == dateWithCorrectFormat }
         
         case .month:
+            // Extract month from the chosen date
+            var chosenMonth: Int {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "MM"
+                let monthString = dateFormatter.string(from: chosenDate)
+                return Int(monthString) ?? 0
+            }
+            
+            // Extract year from the chosen date
+            var chosenYear: Int {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy"
+                let yearString = dateFormatter.string(from: chosenDate)
+                return Int(yearString) ?? 0
+            }
+            
             // Filter according the chosen month (currently december 2021)
-            filteredExpenses = expenses.expenses.filter { Calendar.current.component(.month, from: $0.date) == 12 && Calendar.current.component(.year, from: $0.date) == 2021 }
+            filteredExpenses = expenses.expenses.filter { Calendar.current.component(.month, from: $0.date) == chosenMonth && Calendar.current.component(.year, from: $0.date) == chosenYear }
         
-        case .year:
-            // Filter according the chosen month (currently 2021)
-            filteredExpenses = expenses.expenses.filter { Calendar.current.component(.year, from: $0.date) == 2021 }
         }
         
  
@@ -136,19 +194,52 @@ class ExpensesViewModel: ObservableObject {
     // Method to calculate each category
     private func calculateEachCateroy(){
         // Filter the category arrays
-        foodExpensesArray = fiterByCategory(category: .food)
-        clotheExpensesArray = fiterByCategory(category: .shopping)
+        houseExpensesArray = fiterByCategory(category: .house)
+        subscriptionsExpensesArray = fiterByCategory(category: .subscriptions)
         carExpensesArray = fiterByCategory(category: .car)
+        travelExpensesArray = fiterByCategory(category: .travel)
+        powerExpensesArray = fiterByCategory(category: .power)
+        phoneExpensesArray = fiterByCategory(category: .phoneInternet)
+        foodExpensesArray = fiterByCategory(category: .food)
+        otherGroceriresExpensesArray = fiterByCategory(category: .otherGroceries)
+        shoppingExpensesArray = fiterByCategory(category: .shopping)
+        taxesExpensesArray = fiterByCategory(category: .taxes)
+        activitiesExpensesArray = fiterByCategory(category: .activities)
+        heathExpensesArray = fiterByCategory(category: .health)
+        petsExpensesArray = fiterByCategory(category: .pets)
+        otherExpensesArray = fiterByCategory(category: .others)
         
         // Calculate the category expenses
-        foodExpenses = calculateTotalAmountByCategory(categoryExpenseArray: foodExpensesArray)
-        clotheExpenses = calculateTotalAmountByCategory(categoryExpenseArray: clotheExpensesArray)
+        houseExpenses = calculateTotalAmountByCategory(categoryExpenseArray: houseExpensesArray)
+        subscriptionsExpenses = calculateTotalAmountByCategory(categoryExpenseArray: subscriptionsExpensesArray)
         carExpenses = calculateTotalAmountByCategory(categoryExpenseArray: carExpensesArray)
+        travelExpenses = calculateTotalAmountByCategory(categoryExpenseArray: travelExpensesArray)
+        powerExpenses = calculateTotalAmountByCategory(categoryExpenseArray: powerExpensesArray)
+        phoneExpenses = calculateTotalAmountByCategory(categoryExpenseArray: phoneExpensesArray)
+        foodExpenses = calculateTotalAmountByCategory(categoryExpenseArray: foodExpensesArray)
+        otherGroceriresExpenses = calculateTotalAmountByCategory(categoryExpenseArray: otherGroceriresExpensesArray)
+        shoppingExpenses = calculateTotalAmountByCategory(categoryExpenseArray: shoppingExpensesArray)
+        taxesExpenses = calculateTotalAmountByCategory(categoryExpenseArray: taxesExpensesArray)
+        activitiesExpenses = calculateTotalAmountByCategory(categoryExpenseArray: activitiesExpensesArray)
+        heathExpenses = calculateTotalAmountByCategory(categoryExpenseArray: heathExpensesArray)
+        petsExpenses = calculateTotalAmountByCategory(categoryExpenseArray: petsExpensesArray)
+        otherExpenses = calculateTotalAmountByCategory(categoryExpenseArray: otherExpensesArray)
         
         // Calculate the category ratios
-        foodRatio = calcluateRatioByCategory(expense: foodExpenses)
-        clotheRatio = calcluateRatioByCategory(expense: clotheExpenses)
+        houseRatio = calcluateRatioByCategory(expense: houseExpenses)
+        subscriptionsRatio = calcluateRatioByCategory(expense: subscriptionsExpenses)
         carRatio = calcluateRatioByCategory(expense: carExpenses)
+        travelRatio = calcluateRatioByCategory(expense: travelExpenses)
+        powerRatio = calcluateRatioByCategory(expense: powerExpenses)
+        phoneRatio = calcluateRatioByCategory(expense: phoneExpenses)
+        foodRatio = calcluateRatioByCategory(expense: foodExpenses)
+        otherGroceriresRatio = calcluateRatioByCategory(expense: otherGroceriresExpenses)
+        shoppingRatio = calcluateRatioByCategory(expense: shoppingExpenses)
+        taxesRatio = calcluateRatioByCategory(expense: taxesExpenses)
+        activitiesRatio = calcluateRatioByCategory(expense: activitiesExpenses)
+        heathRatio = calcluateRatioByCategory(expense: heathExpenses)
+        petsRatio = calcluateRatioByCategory(expense: petsExpenses)
+        otherRatio = calcluateRatioByCategory(expense: otherExpenses)
         
         // Create objects, append in the array and sort it
         createCategoryObjects()
@@ -160,19 +251,53 @@ class ExpensesViewModel: ObservableObject {
     private func createCategoryObjects() {
         
         // Create the category objects
+        let houseObject = Category(categoryName: "House", categoryColor: .yellow, categoryExpense: houseExpenses, expenseArray: houseExpensesArray, categoryRatio: houseRatio, categoryImageName: "🏠")
+        
+        let subscriptionsObject = Category(categoryName: "Subscriptions", categoryColor: .red, categoryExpense: subscriptionsExpenses, expenseArray: subscriptionsExpensesArray, categoryRatio: subscriptionsRatio, categoryImageName: "🎥")
+        
+        let carObject = Category(categoryName: "Car", categoryColor: Color("carColor"), categoryExpense: carExpenses, expenseArray: carExpensesArray, categoryRatio: carRatio, categoryImageName: "🚙")
+        
+        let travelObject = Category(categoryName: "Travel", categoryColor: .black, categoryExpense: travelExpenses, expenseArray: travelExpensesArray, categoryRatio: travelRatio, categoryImageName: "✈️")
+        
+        let powerObject = Category(categoryName: "Power(Electricity,water...)", categoryColor: .green, categoryExpense: powerExpenses, expenseArray: powerExpensesArray, categoryRatio: powerRatio, categoryImageName: "🔌")
+        
+        let phoneObject = Category(categoryName: "Phone/Internet", categoryColor: .gray, categoryExpense: phoneExpenses, expenseArray: phoneExpensesArray, categoryRatio: phoneRatio, categoryImageName: "📱")
+        
         let foodObject = Category(categoryName: "Food", categoryColor: .blue, categoryExpense: foodExpenses, expenseArray: foodExpensesArray, categoryRatio: foodRatio, categoryImageName: "🍔")
         
-        let clotheObject = Category(categoryName: "Shopping", categoryColor: .purple, categoryExpense: clotheExpenses, expenseArray: clotheExpensesArray, categoryRatio: clotheRatio, categoryImageName: "👜")
+        let otherGroceriesObject = Category(categoryName: "Other groceries", categoryColor: .pink, categoryExpense: otherGroceriresExpenses, expenseArray: otherGroceriresExpensesArray, categoryRatio: otherGroceriresRatio, categoryImageName: "🧽")
         
-        let carObject = Category(categoryName: "Car", categoryColor: .orange, categoryExpense: carExpenses, expenseArray: carExpensesArray, categoryRatio: carRatio, categoryImageName: "🚙")
+        let shoppingObject = Category(categoryName: "Shopping", categoryColor: .purple, categoryExpense: shoppingExpenses, expenseArray: shoppingExpensesArray, categoryRatio: shoppingRatio, categoryImageName: "👜")
+        
+        let taxesObject = Category(categoryName: "Taxes", categoryColor: .yellow, categoryExpense: taxesExpenses, expenseArray: taxesExpensesArray, categoryRatio: taxesRatio, categoryImageName: "📨")
+        
+        let activitiesObject = Category(categoryName: "Activities", categoryColor: .orange, categoryExpense: activitiesExpenses, expenseArray: activitiesExpensesArray, categoryRatio: activitiesRatio, categoryImageName: "🎳")
+        
+        let healthObject = Category(categoryName: "Health", categoryColor: .red, categoryExpense: heathExpenses, expenseArray: heathExpensesArray, categoryRatio: heathRatio, categoryImageName: "🩺")
+        
+        let petsObject = Category(categoryName: "Pets", categoryColor: .purple, categoryExpense: petsExpenses, expenseArray: petsExpensesArray, categoryRatio: petsRatio, categoryImageName: "🐶")
+        
+        let othersObject = Category(categoryName: "Others", categoryColor: .gray, categoryExpense: otherExpenses, expenseArray: otherExpensesArray, categoryRatio: otherRatio, categoryImageName: "❔")
+        
         
         // Clear the category array
         categoryArray.removeAll()
         
         // Append the objects in the array
-        categoryArray.append(foodObject)
-        categoryArray.append(clotheObject)
+        categoryArray.append(houseObject)
+        categoryArray.append(subscriptionsObject)
         categoryArray.append(carObject)
+        categoryArray.append(travelObject)
+        categoryArray.append(powerObject)
+        categoryArray.append(phoneObject)
+        categoryArray.append(foodObject)
+        categoryArray.append(otherGroceriesObject)
+        categoryArray.append(shoppingObject)
+        categoryArray.append(taxesObject)
+        categoryArray.append(activitiesObject)
+        categoryArray.append(healthObject)
+        categoryArray.append(petsObject)
+        categoryArray.append(othersObject)
         
         // Sort the array by expense
         categoryArray.sort { (expense1, expense2) -> Bool in

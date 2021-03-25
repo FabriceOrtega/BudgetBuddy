@@ -16,6 +16,7 @@ struct CategoryView: View {
     @Binding var categoryName: String
     @Binding var amountCategory: Double
     @Binding var categoryImageName: String
+    @Binding var currency: String
     
     var roundRadius: CGFloat = 60.0
     
@@ -33,7 +34,7 @@ struct CategoryView: View {
                 HStack{
                     Text(categoryName)
                     Spacer()
-                    Text("\(amountCategory, specifier: "%.2f")€")
+                    Text("\(amountCategory, specifier: "%.2f")\(currency)")
                 }
                 
                 ExpenseBarView(value: $amountRatio, categoryColor: $color).frame(height: 20)
@@ -46,7 +47,7 @@ struct CategoryView: View {
 
 struct CategoryView_Previews: PreviewProvider {
     static var previews: some View {
-        CategoryView(amountRatio: .constant(0.7), color: .constant(.blue), categoryName: .constant("Home"), amountCategory: .constant(152.0), categoryImageName: .constant("🏠"))
+        CategoryView(amountRatio: .constant(0.7), color: .constant(.blue), categoryName: .constant("Home"), amountCategory: .constant(152.0), categoryImageName: .constant("🏠"), currency: .constant("£"))
             .previewLayout(.sizeThatFits)
     }
 }

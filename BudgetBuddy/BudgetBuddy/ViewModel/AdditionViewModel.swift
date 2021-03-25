@@ -12,6 +12,9 @@ class AdditionViewModel: ObservableObject {
     // Reference to the Expenses class
     @Published var expenses = Expenses.shared
     
+    // Refernec to the CoreData class
+    @Published var storage = CoreDataStorage.shared
+    
     // Properties coming from the view
     @Published var title:String = ""
     @Published var description:String = ""
@@ -46,7 +49,12 @@ class AdditionViewModel: ObservableObject {
     
     // Method to append the expense object in the expenses array
     func appendExpenseInArray(){
+        // Append in the array
         expenses.expenses.append(createExpenseObject())
+        
+        // Save with CoreData
+        storage.addNewExpense(expense: createExpenseObject())
+        
     }
     
     
