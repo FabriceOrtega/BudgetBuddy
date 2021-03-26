@@ -61,7 +61,7 @@ struct DateView: View {
                         }
                     }
                     .pickerStyle(MenuPickerStyle())
-                }.padding(.horizontal)
+                }
                 
                 HStack{
                     if viewMode == "day" {
@@ -73,15 +73,14 @@ struct DateView: View {
                     Image(systemName: "arrowtriangle.down.fill").font(.caption)
                     Spacer()
                     
-                }.padding()
+                }
                 .font(.title2)
                 .onTapGesture {
                     withAnimation {
                         isChosingDate.toggle()
                     }
                 }
-            }
-            
+            }.padding()
             
         }
         
@@ -107,9 +106,6 @@ struct DateView: View {
                 }
                 
                 
-                
-                
-                
                 //Button to validate
                 Button(action: {
                     withAnimation {
@@ -125,13 +121,13 @@ struct DateView: View {
             }
         }
         
-        
     }
 }
 
 struct DateView_Previews: PreviewProvider {
     static var previews: some View {
         DateView(chosenDate: .constant(Date()), currency: .constant("€"), viewMode: .constant("day"))
+            .previewLayout(.sizeThatFits)
     }
 }
 

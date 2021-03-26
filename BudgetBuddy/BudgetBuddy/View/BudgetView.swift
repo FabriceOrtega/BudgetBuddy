@@ -13,6 +13,8 @@ struct BudgetView: View {
     
     // Navigation to the addition view
     @State var additionViewIsShown = false
+    let additionViewUrl = URL(string: "BudgetBuddy:///AdditionView")
+    
     
     // Navigation to the detail view
     @State var detailViewIsShown = false
@@ -62,24 +64,13 @@ struct BudgetView: View {
                     Spacer()
                     
                     HStack{
-//                        Button(action: {
-//                            expensesViewModel.filterExpenses()
-//                        }, label: {
-//                            Image(systemName: "arrow.clockwise.circle.fill").font(.largeTitle)
-//                        })
                         
                         Spacer()
                         
                         Button(action: {
                             additionViewIsShown.toggle()
                         }, label: {
-                            ZStack{
-                                RoundedRectangle(cornerRadius: 60)
-                                    .frame(width: 60, height: 60)
-                                Image(systemName: "plus.circle")
-                                    .font(.largeTitle)
-                                    .foregroundColor(.white)
-                            }
+                            AdditionButtonView(cornerRadius: 60, fontSize: .largeTitle)
                         })
                         .sheet(isPresented: $additionViewIsShown, content: {
                             AdditionView(additionViewIsShown: $additionViewIsShown.onChange(changeExpense))
@@ -91,6 +82,12 @@ struct BudgetView: View {
             
             
         }
+        .onOpenURL(perform: { url in
+            // Open app directly on addition view when accesssing from the widget
+            if url == additionViewUrl {
+                additionViewIsShown = true
+            }
+        })
         
     }
     

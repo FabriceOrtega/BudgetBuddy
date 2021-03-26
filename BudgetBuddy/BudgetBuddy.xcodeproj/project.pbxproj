@@ -22,10 +22,43 @@
 		1C6A39932609E208008EE87B /* AdditionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6A39922609E208008EE87B /* AdditionViewModel.swift */; };
 		1C6A39962609ECD1008EE87B /* DecimalTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6A39952609ECD1008EE87B /* DecimalTextFieldView.swift */; };
 		1C6CC22A2607DB7700778D81 /* ExpenseBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6CC2292607DB7700778D81 /* ExpenseBarView.swift */; };
+		1CD09066260CCA740021A87F /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CD09065260CCA740021A87F /* WidgetKit.framework */; };
+		1CD09068260CCA740021A87F /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CD09067260CCA740021A87F /* SwiftUI.framework */; };
+		1CD0906B260CCA740021A87F /* BudgetBuddyExpenseAdditionWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD0906A260CCA740021A87F /* BudgetBuddyExpenseAdditionWidget.swift */; };
+		1CD0906E260CCA760021A87F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CD0906D260CCA760021A87F /* Assets.xcassets */; };
+		1CD09070260CCA760021A87F /* BudgetBuddyExpenseAdditionWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 1CD0906C260CCA740021A87F /* BudgetBuddyExpenseAdditionWidget.intentdefinition */; };
+		1CD09071260CCA760021A87F /* BudgetBuddyExpenseAdditionWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 1CD0906C260CCA740021A87F /* BudgetBuddyExpenseAdditionWidget.intentdefinition */; };
+		1CD09074260CCA760021A87F /* BudgetBuddyExpenseAdditionWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 1CD09063260CCA740021A87F /* BudgetBuddyExpenseAdditionWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		1CD0907C260CCBCB0021A87F /* AdditionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD0907B260CCBCB0021A87F /* AdditionButtonView.swift */; };
+		1CD0907F260CCC300021A87F /* AdditionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD0907B260CCBCB0021A87F /* AdditionButtonView.swift */; };
 		1CE2B1CD2608892B007A92B4 /* ExpensesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2B1CC2608892B007A92B4 /* ExpensesViewModel.swift */; };
 		1CE2B1D02608B03F007A92B4 /* TotalExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2B1CF2608B03F007A92B4 /* TotalExpenseView.swift */; };
 		1CFB352F260A7FE70032B232 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFB352E260A7FE70032B232 /* DetailView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1CD09072260CCA760021A87F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1C3FBD64260625C400E09FEC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1CD09062260CCA740021A87F;
+			remoteInfo = BudgetBuddyExpenseAdditionWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1CD09075260CCA760021A87F /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				1CD09074260CCA760021A87F /* BudgetBuddyExpenseAdditionWidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1C2D9823260C98F500BF9607 /* CoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorage.swift; sourceTree = "<group>"; };
@@ -45,6 +78,14 @@
 		1C6A39922609E208008EE87B /* AdditionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionViewModel.swift; sourceTree = "<group>"; };
 		1C6A39952609ECD1008EE87B /* DecimalTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalTextFieldView.swift; sourceTree = "<group>"; };
 		1C6CC2292607DB7700778D81 /* ExpenseBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseBarView.swift; sourceTree = "<group>"; };
+		1CD09063260CCA740021A87F /* BudgetBuddyExpenseAdditionWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BudgetBuddyExpenseAdditionWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		1CD09065260CCA740021A87F /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		1CD09067260CCA740021A87F /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		1CD0906A260CCA740021A87F /* BudgetBuddyExpenseAdditionWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetBuddyExpenseAdditionWidget.swift; sourceTree = "<group>"; };
+		1CD0906C260CCA740021A87F /* BudgetBuddyExpenseAdditionWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = BudgetBuddyExpenseAdditionWidget.intentdefinition; sourceTree = "<group>"; };
+		1CD0906D260CCA760021A87F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1CD0906F260CCA760021A87F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1CD0907B260CCBCB0021A87F /* AdditionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionButtonView.swift; sourceTree = "<group>"; };
 		1CE2B1CC2608892B007A92B4 /* ExpensesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesViewModel.swift; sourceTree = "<group>"; };
 		1CE2B1CF2608B03F007A92B4 /* TotalExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalExpenseView.swift; sourceTree = "<group>"; };
 		1CFB352E260A7FE70032B232 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
@@ -55,6 +96,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1CD09060260CCA740021A87F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1CD09068260CCA740021A87F /* SwiftUI.framework in Frameworks */,
+				1CD09066260CCA740021A87F /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +124,8 @@
 			isa = PBXGroup;
 			children = (
 				1C3FBD6E260625C400E09FEC /* BudgetBuddy */,
+				1CD09069260CCA740021A87F /* BudgetBuddyExpenseAdditionWidget */,
+				1CD09064260CCA740021A87F /* Frameworks */,
 				1C3FBD6D260625C400E09FEC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -82,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				1C3FBD6C260625C400E09FEC /* BudgetBuddy.app */,
+				1CD09063260CCA740021A87F /* BudgetBuddyExpenseAdditionWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -147,6 +200,7 @@
 				1CE2B1CF2608B03F007A92B4 /* TotalExpenseView.swift */,
 				1C6A39952609ECD1008EE87B /* DecimalTextFieldView.swift */,
 				1C613A53260A25D000A4810A /* DateView.swift */,
+				1CD0907B260CCBCB0021A87F /* AdditionButtonView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -159,6 +213,26 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		1CD09064260CCA740021A87F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1CD09065260CCA740021A87F /* WidgetKit.framework */,
+				1CD09067260CCA740021A87F /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1CD09069260CCA740021A87F /* BudgetBuddyExpenseAdditionWidget */ = {
+			isa = PBXGroup;
+			children = (
+				1CD0906A260CCA740021A87F /* BudgetBuddyExpenseAdditionWidget.swift */,
+				1CD0906C260CCA740021A87F /* BudgetBuddyExpenseAdditionWidget.intentdefinition */,
+				1CD0906D260CCA760021A87F /* Assets.xcassets */,
+				1CD0906F260CCA760021A87F /* Info.plist */,
+			);
+			path = BudgetBuddyExpenseAdditionWidget;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -169,15 +243,34 @@
 				1C3FBD68260625C400E09FEC /* Sources */,
 				1C3FBD69260625C400E09FEC /* Frameworks */,
 				1C3FBD6A260625C400E09FEC /* Resources */,
+				1CD09075260CCA760021A87F /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				1CD09073260CCA760021A87F /* PBXTargetDependency */,
 			);
 			name = BudgetBuddy;
 			productName = BudgetBuddy;
 			productReference = 1C3FBD6C260625C400E09FEC /* BudgetBuddy.app */;
 			productType = "com.apple.product-type.application";
+		};
+		1CD09062260CCA740021A87F /* BudgetBuddyExpenseAdditionWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1CD09078260CCA760021A87F /* Build configuration list for PBXNativeTarget "BudgetBuddyExpenseAdditionWidgetExtension" */;
+			buildPhases = (
+				1CD0905F260CCA740021A87F /* Sources */,
+				1CD09060260CCA740021A87F /* Frameworks */,
+				1CD09061260CCA740021A87F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BudgetBuddyExpenseAdditionWidgetExtension;
+			productName = BudgetBuddyExpenseAdditionWidgetExtension;
+			productReference = 1CD09063260CCA740021A87F /* BudgetBuddyExpenseAdditionWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -189,6 +282,9 @@
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
 					1C3FBD6B260625C400E09FEC = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					1CD09062260CCA740021A87F = {
 						CreatedOnToolsVersion = 12.4;
 					};
 				};
@@ -207,6 +303,7 @@
 			projectRoot = "";
 			targets = (
 				1C3FBD6B260625C400E09FEC /* BudgetBuddy */,
+				1CD09062260CCA740021A87F /* BudgetBuddyExpenseAdditionWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -221,6 +318,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1CD09061260CCA740021A87F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1CD0906E260CCA760021A87F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -232,11 +337,13 @@
 				1CE2B1D02608B03F007A92B4 /* TotalExpenseView.swift in Sources */,
 				1C53BE7F2606280200FE4A59 /* Expenses.swift in Sources */,
 				1C613A57260A304400A4810A /* extension Binding.swift in Sources */,
+				1CD09071260CCA760021A87F /* BudgetBuddyExpenseAdditionWidget.intentdefinition in Sources */,
 				1C2D9829260C9A1400BF9607 /* ExpensesCoreData.xcdatamodeld in Sources */,
 				1CFB352F260A7FE70032B232 /* DetailView.swift in Sources */,
 				1C6CC22A2607DB7700778D81 /* ExpenseBarView.swift in Sources */,
 				1C53BE7B2606275400FE4A59 /* Expense.swift in Sources */,
 				1C6A39962609ECD1008EE87B /* DecimalTextFieldView.swift in Sources */,
+				1CD0907C260CCBCB0021A87F /* AdditionButtonView.swift in Sources */,
 				1C6A39932609E208008EE87B /* AdditionViewModel.swift in Sources */,
 				1C613A54260A25D000A4810A /* DateView.swift in Sources */,
 				1C3FBD72260625C400E09FEC /* BudgetView.swift in Sources */,
@@ -247,7 +354,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1CD0905F260CCA740021A87F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1CD0906B260CCA740021A87F /* BudgetBuddyExpenseAdditionWidget.swift in Sources */,
+				1CD0907F260CCC300021A87F /* AdditionButtonView.swift in Sources */,
+				1CD09070260CCA760021A87F /* BudgetBuddyExpenseAdditionWidget.intentdefinition in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1CD09073260CCA760021A87F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1CD09062260CCA740021A87F /* BudgetBuddyExpenseAdditionWidgetExtension */;
+			targetProxy = 1CD09072260CCA760021A87F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1C3FBD79260625C700E09FEC /* Debug */ = {
@@ -369,6 +494,7 @@
 		1C3FBD7C260625C700E09FEC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -391,6 +517,7 @@
 		1C3FBD7D260625C700E09FEC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -405,6 +532,48 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fabriceortega.BudgetBuddy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		1CD09076260CCA760021A87F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QSZM3JVR24;
+				INFOPLIST_FILE = BudgetBuddyExpenseAdditionWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fabriceortega.BudgetBuddy.BudgetBuddyExpenseAdditionWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1CD09077260CCA760021A87F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QSZM3JVR24;
+				INFOPLIST_FILE = BudgetBuddyExpenseAdditionWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fabriceortega.BudgetBuddy.BudgetBuddyExpenseAdditionWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -427,6 +596,15 @@
 			buildConfigurations = (
 				1C3FBD7C260625C700E09FEC /* Debug */,
 				1C3FBD7D260625C700E09FEC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1CD09078260CCA760021A87F /* Build configuration list for PBXNativeTarget "BudgetBuddyExpenseAdditionWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1CD09076260CCA760021A87F /* Debug */,
+				1CD09077260CCA760021A87F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
