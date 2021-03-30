@@ -47,6 +47,18 @@ struct BudgetBuddyExpenseAdditionWidgetEntryView : View {
         ZStack{
             Rectangle().foregroundColor(Color("backgroundColor"))
             
+            VStack{
+                HStack{
+                    Spacer()
+                    Image("Pig")
+                        .resizable()
+                        .frame(width: 120, height: 120)
+                        .opacity(0.4)
+                }
+                Spacer()
+            }
+            
+            
             
             
             VStack{
@@ -60,12 +72,14 @@ struct BudgetBuddyExpenseAdditionWidgetEntryView : View {
                     Spacer()
                     
                     
+                    
+                    
                 }
                 Spacer()
                 Text("Add an expense")
                     .bold()
                     .multilineTextAlignment(.center)
-                    .foregroundColor(.white)
+                    .foregroundColor(Color("textColor"))
                     .font(Font.custom("", size: 15))
                 AdditionButtonView(cornerRadius: 60, fontSize: .largeTitle)
                     .foregroundColor(Color("buttonColor"))
@@ -95,7 +109,7 @@ struct BudgetBuddyExpenseAdditionWidget: Widget {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
             BudgetBuddyExpenseAdditionWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("Exepense addition Widget")
+        .configurationDisplayName("Expense addition Widget")
         .description("This will allow you to quickly add an expense.")
         .supportedFamilies([.systemSmall])
     }

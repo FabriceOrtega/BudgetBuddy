@@ -22,9 +22,14 @@ struct TotalExpenseView: View {
                 .foregroundColor(.accentColor)
             
             HStack{
-                Text("💰").font(.custom("", fixedSize: 80))
+                //Text("💰").font(.custom("", fixedSize: 80))
+                Image("Pig")
+                    .resizable()
+                    .frame(width: 100, height: 100)
                 Spacer()
-                Text("\(amountTotal, specifier: "%.2f")\(currency)").font(.title)
+                Text("\(amountTotal, specifier: "%.2f")\(currency)")
+                    .font(.title)
+                    .foregroundColor(Color("textColor"))
             }.padding()
         }.padding()
         .onTapGesture {

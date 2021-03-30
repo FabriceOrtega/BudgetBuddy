@@ -26,7 +26,11 @@ struct CategoryView: View {
                 RoundedRectangle(cornerRadius: roundRadius)
                     .frame(width: roundRadius, height: roundRadius)
                     .foregroundColor(color)
-                Text(categoryImageName).font(.title)
+                //Text(categoryImageName).font(.title)
+                Image(categoryImageName)
+                    .resizable()
+                    .frame(width: roundRadius, height: roundRadius)
+                    .scaleEffect(0.85)
             }
             
             
@@ -47,7 +51,7 @@ struct CategoryView: View {
 
 struct CategoryView_Previews: PreviewProvider {
     static var previews: some View {
-        CategoryView(amountRatio: .constant(0.7), color: .constant(.blue), categoryName: .constant("Home"), amountCategory: .constant(152.0), categoryImageName: .constant("🏠"), currency: .constant("£"))
+        CategoryView(amountRatio: .constant(0.7), color: .constant(.blue), categoryName: .constant("Home"), amountCategory: .constant(152.0), categoryImageName: .constant("House"), currency: .constant("£"))
             .previewLayout(.sizeThatFits)
     }
 }
